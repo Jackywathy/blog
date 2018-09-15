@@ -2,15 +2,18 @@ import tornado.ioloop
 import tornado.web
 
 
-class MainHandler(tornado.web.RequestHandler):
+class HomeScreenHandler(tornado.web.RequestHandler):
     def get(self):
-        self.write("Hewwo, world")
+        self.render("HomeScreen.html")
+
 
 
 def make_app():
     return tornado.web.Application([
-        (r"/", MainHandler),
-    ])
+        (r"/", HomeScreenHandler),
+
+    ], template_path="templates/"
+    )
 
 
 if __name__ == "__main__":
